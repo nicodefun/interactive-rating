@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main.css" />
+    <title>Frontend Mentor | Interactive rating component</title>
+  </head>
+  <body>
+    <div id="app">
+      <main>
+        <section class="container">
+          <div v-if="!isThankyou" :class="{invisible : isThankyou}">
+            <div class="circle-bg icon">
+              <img src="./images/icon-star.svg" alt="icon svg" />
+            </div>
+            <h2>How did we do?</h2>
+            <p>
+              Please let us know how we did with your support request. All
+              feedback is appreciated to help us improve our offering!
+            </p>
+
+            <ul class="rating-items">
+              <li
+                class="rating-item circle-bg"
+                v-for="(item, index) in total"
+                :key="index"
+                @click="rating"
+              >
+                <span>{{item}}</span>
+              </li>
+            </ul>
+            <button @click="clickBtn">SUBMIT</button>
+          </div>
+          <div v-else="isThankyou" class="card" :class="{invisible : !isThankyou}">
+            <div class="icon">
+              <img src="./images/illustration-thank-you.svg" alt="icon svg" />
+            </div>
+            <div class="thank-you-rate">
+              <p>You selected {{itemNumber}} out of {{total}}</p>
+            </div>
+           <h3>Thank you!</h3>
+           <p>
+            We appreciate you taking the time to give a rating. If you ever need more support, 
+            don’t hesitate to get in touch!</p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
